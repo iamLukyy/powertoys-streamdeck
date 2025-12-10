@@ -1,0 +1,8 @@
+node_modules/
+com.powertoys.controller.sdPlugin/node_modules/
+com.powertoys.controller.sdPlugin/bin/
+*.streamDeckPlugin
+.DS_Store
+*.log
+test-*.mjs
+nul

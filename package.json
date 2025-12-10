@@ -1,0 +1,33 @@
+{
+  "name": "com.powertoys.controller",
+  "version": "1.0.0",
+  "description": "StreamDeck plugin for controlling Microsoft PowerToys",
+  "main": "com.powertoys.controller.sdPlugin/bin/plugin.js",
+  "type": "module",
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -c --watch",
+    "dev": "npm run build && streamdeck restart com.powertoys.controller"
+  },
+  "keywords": [
+    "streamdeck",
+    "powertoys",
+    "elgato"
+  ],
+  "author": "lukyn",
+  "license": "MIT",
+  "devDependencies": {
+    "@elgato/streamdeck": "^1.1.0",
+    "@rollup/plugin-commonjs": "^29.0.0",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/node": "^24.10.2",
+    "rollup": "^4.24.0",
+    "tslib": "^2.7.0",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "@nut-tree-fork/nut-js": "^4.2.6"
+  }
+}

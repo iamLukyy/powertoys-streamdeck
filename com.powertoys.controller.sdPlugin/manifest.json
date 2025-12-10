@@ -1,0 +1,373 @@
+{
+  "$schema": "https://schemas.elgato.com/streamdeck/plugins/manifest.json",
+  "Author": "lukyn",
+  "Name": "PowerToys Controller",
+  "Description": "Complete control over Microsoft PowerToys - toggle modules and trigger features",
+  "Version": "1.0.0.0",
+  "UUID": "com.powertoys.controller",
+  "Icon": "imgs/plugin/icon",
+  "CategoryIcon": "imgs/plugin/category",
+  "Category": "PowerToys",
+  "CodePath": "bin/plugin.js",
+  "SDKVersion": 2,
+  "Software": { "MinimumVersion": "6.6" },
+  "Nodejs": { "Version": "20", "Debug": "enabled" },
+  "OS": [{ "Platform": "windows", "MinimumVersion": "10" }],
+  "Actions": [
+    {
+      "UUID": "com.powertoys.controller.toggle.fancyzones",
+      "Name": "FancyZones",
+      "Icon": "imgs/actions/fancyzones",
+      "Tooltip": "Enable/Disable FancyZones",
+      "States": [
+        { "Image": "imgs/actions/fancyzones", "Title": "Zones OFF" },
+        { "Image": "imgs/actions/fancyzones", "Title": "Zones ON" }
+      ],
+      "Controllers": ["Keypad"]
+    },
+    {
+      "UUID": "com.powertoys.controller.toggle.imageresizer",
+      "Name": "Image Resizer",
+      "Icon": "imgs/actions/imageresizer",
+      "Tooltip": "Enable/Disable Image Resizer",
+      "States": [
+        { "Image": "imgs/actions/imageresizer", "Title": "Resize OFF" },
+        { "Image": "imgs/actions/imageresizer", "Title": "Resize ON" }
+      ],
+      "Controllers": ["Keypad"]
+    },
+    {
+      "UUID": "com.powertoys.controller.toggle.fileexplorer",
+      "Name": "File Explorer Preview",
+      "Icon": "imgs/actions/fileexplorer",
+      "Tooltip": "Enable/Disable File Explorer Preview",
+      "States": [
+        { "Image": "imgs/actions/fileexplorer", "Title": "Preview OFF" },
+        { "Image": "imgs/actions/fileexplorer", "Title": "Preview ON" }
+      ],
+      "Controllers": ["Keypad"]
+    },
+    {
+      "UUID": "com.powertoys.controller.toggle.powerrename",
+      "Name": "PowerRename",
+      "Icon": "imgs/actions/powerrename",
+      "Tooltip": "Enable/Disable PowerRename",
+      "States": [
+        { "Image": "imgs/actions/powerrename", "Title": "Rename OFF" },
+        { "Image": "imgs/actions/powerrename", "Title": "Rename ON" }
+      ],
+      "Controllers": ["Keypad"]
+    },
+    {
+      "UUID": "com.powertoys.controller.toggle.keyboardmanager",
+      "Name": "Keyboard Manager",
+      "Icon": "imgs/actions/keyboardmanager",
+      "Tooltip": "Enable/Disable Keyboard Manager",
+      "States": [
+        { "Image": "imgs/actions/keyboardmanager", "Title": "Keys OFF" },
+        { "Image": "imgs/actions/keyboardmanager", "Title": "Keys ON" }
+      ],
+      "Controllers": ["Keypad"]
+    },
+    {
+      "UUID": "com.powertoys.controller.toggle.cropandlock",
+      "Name": "Crop And Lock",
+      "Icon": "imgs/actions/cropandlock",
+      "Tooltip": "Enable/Disable Crop And Lock",
+      "States": [
+        { "Image": "imgs/actions/cropandlock", "Title": "Crop OFF" },
+        { "Image": "imgs/actions/cropandlock", "Title": "Crop ON" }
+      ],
+      "Controllers": ["Keypad"]
+    },
+    {
+      "UUID": "com.powertoys.controller.toggle.awake",
+      "Name": "Awake",
+      "Icon": "imgs/actions/awake",
+      "Tooltip": "Enable/Disable Awake",
+      "States": [
+        { "Image": "imgs/actions/awake", "Title": "Awake OFF" },
+        { "Image": "imgs/actions/awake", "Title": "Awake ON" }
+      ],
+      "Controllers": ["Keypad"]
+    },
+    {
+      "UUID": "com.powertoys.controller.toggle.mousewithoutborders",
+      "Name": "Mouse Without Borders",
+      "Icon": "imgs/actions/mousewithoutborders",
+      "Tooltip": "Enable/Disable Mouse Without Borders",
+      "States": [
+        { "Image": "imgs/actions/mousewithoutborders", "Title": "MWB OFF" },
+        { "Image": "imgs/actions/mousewithoutborders", "Title": "MWB ON" }
+      ],
+      "Controllers": ["Keypad"]
+    },
+    {
+      "UUID": "com.powertoys.controller.toggle.quickaccent",
+      "Name": "Quick Accent",
+      "Icon": "imgs/actions/quickaccent",
+      "Tooltip": "Enable/Disable Quick Accent",
+      "States": [
+        { "Image": "imgs/actions/quickaccent", "Title": "Accent OFF" },
+        { "Image": "imgs/actions/quickaccent", "Title": "Accent ON" }
+      ],
+      "Controllers": ["Keypad"]
+    },
+    {
+      "UUID": "com.powertoys.controller.toggle.hosts",
+      "Name": "Hosts Editor",
+      "Icon": "imgs/actions/hosts",
+      "Tooltip": "Enable/Disable Hosts Editor",
+      "States": [
+        { "Image": "imgs/actions/hosts", "Title": "Hosts OFF" },
+        { "Image": "imgs/actions/hosts", "Title": "Hosts ON" }
+      ],
+      "Controllers": ["Keypad"]
+    },
+    {
+      "UUID": "com.powertoys.controller.toggle.filelocksmith",
+      "Name": "File Locksmith",
+      "Icon": "imgs/actions/filelocksmith",
+      "Tooltip": "Enable/Disable File Locksmith",
+      "States": [
+        { "Image": "imgs/actions/filelocksmith", "Title": "Lock OFF" },
+        { "Image": "imgs/actions/filelocksmith", "Title": "Lock ON" }
+      ],
+      "Controllers": ["Keypad"]
+    },
+    {
+      "UUID": "com.powertoys.controller.toggle.registrypreview",
+      "Name": "Registry Preview",
+      "Icon": "imgs/actions/registrypreview",
+      "Tooltip": "Enable/Disable Registry Preview",
+      "States": [
+        { "Image": "imgs/actions/registrypreview", "Title": "Reg OFF" },
+        { "Image": "imgs/actions/registrypreview", "Title": "Reg ON" }
+      ],
+      "Controllers": ["Keypad"]
+    },
+    {
+      "UUID": "com.powertoys.controller.toggle.environmentvariables",
+      "Name": "Environment Variables",
+      "Icon": "imgs/actions/environmentvariables",
+      "Tooltip": "Enable/Disable Environment Variables",
+      "States": [
+        { "Image": "imgs/actions/environmentvariables", "Title": "Env OFF" },
+        { "Image": "imgs/actions/environmentvariables", "Title": "Env ON" }
+      ],
+      "Controllers": ["Keypad"]
+    },
+    {
+      "UUID": "com.powertoys.controller.toggle.newplus",
+      "Name": "New+",
+      "Icon": "imgs/actions/newplus",
+      "Tooltip": "Enable/Disable New+",
+      "States": [
+        { "Image": "imgs/actions/newplus", "Title": "New+ OFF" },
+        { "Image": "imgs/actions/newplus", "Title": "New+ ON" }
+      ],
+      "Controllers": ["Keypad"]
+    },
+    {
+      "UUID": "com.powertoys.controller.toggle.zoomit",
+      "Name": "ZoomIt",
+      "Icon": "imgs/actions/zoomit",
+      "Tooltip": "Enable/Disable ZoomIt",
+      "States": [
+        { "Image": "imgs/actions/zoomit", "Title": "Zoom OFF" },
+        { "Image": "imgs/actions/zoomit", "Title": "Zoom ON" }
+      ],
+      "Controllers": ["Keypad"]
+    },
+    {
+      "UUID": "com.powertoys.controller.toggle.cursorwrap",
+      "Name": "Cursor Wrap",
+      "Icon": "imgs/actions/cursorwrap",
+      "Tooltip": "Enable/Disable Cursor Wrap",
+      "States": [
+        { "Image": "imgs/actions/cursorwrap", "Title": "Wrap OFF" },
+        { "Image": "imgs/actions/cursorwrap", "Title": "Wrap ON" }
+      ],
+      "Controllers": ["Keypad"]
+    },
+    {
+      "UUID": "com.powertoys.controller.toggle.lightswitch",
+      "Name": "Light Switch",
+      "Icon": "imgs/actions/lightswitch",
+      "Tooltip": "Enable/Disable Light Switch",
+      "States": [
+        { "Image": "imgs/actions/lightswitch", "Title": "Theme OFF" },
+        { "Image": "imgs/actions/lightswitch", "Title": "Theme ON" }
+      ],
+      "Controllers": ["Keypad"]
+    },
+    {
+      "UUID": "com.powertoys.controller.trigger.colorpicker",
+      "Name": "Color Picker",
+      "Icon": "imgs/actions/colorpicker",
+      "Tooltip": "Activate Color Picker (Win+Shift+C)",
+      "States": [{ "Image": "imgs/actions/colorpicker", "Title": "Color" }],
+      "Controllers": ["Keypad"]
+    },
+    {
+      "UUID": "com.powertoys.controller.trigger.alwaysontop",
+      "Name": "Always On Top",
+      "Icon": "imgs/actions/alwaysontop",
+      "Tooltip": "Pin window on top (Win+Ctrl+T)",
+      "States": [{ "Image": "imgs/actions/alwaysontop", "Title": "Pin Top" }],
+      "Controllers": ["Keypad"]
+    },
+    {
+      "UUID": "com.powertoys.controller.trigger.fancyzoneseditor",
+      "Name": "FancyZones Editor",
+      "Icon": "imgs/actions/fancyzoneseditor",
+      "Tooltip": "Open FancyZones Editor (Win+Shift+`)",
+      "States": [{ "Image": "imgs/actions/fancyzoneseditor", "Title": "Zones Ed" }],
+      "Controllers": ["Keypad"]
+    },
+    {
+      "UUID": "com.powertoys.controller.trigger.textextractor",
+      "Name": "Text Extractor",
+      "Icon": "imgs/actions/textextractor",
+      "Tooltip": "OCR - Extract text (Win+Shift+T)",
+      "States": [{ "Image": "imgs/actions/textextractor", "Title": "OCR" }],
+      "Controllers": ["Keypad"]
+    },
+    {
+      "UUID": "com.powertoys.controller.trigger.shortcutguide",
+      "Name": "Shortcut Guide",
+      "Icon": "imgs/actions/shortcutguide",
+      "Tooltip": "Show shortcuts (Win+Shift+/)",
+      "States": [{ "Image": "imgs/actions/shortcutguide", "Title": "Shortcuts" }],
+      "Controllers": ["Keypad"]
+    },
+    {
+      "UUID": "com.powertoys.controller.trigger.measuretool",
+      "Name": "Screen Ruler",
+      "Icon": "imgs/actions/measuretool",
+      "Tooltip": "Measure pixels (Win+Ctrl+Shift+M)",
+      "States": [{ "Image": "imgs/actions/measuretool", "Title": "Ruler" }],
+      "Controllers": ["Keypad"]
+    },
+    {
+      "UUID": "com.powertoys.controller.trigger.findmymouse",
+      "Name": "Find My Mouse",
+      "Icon": "imgs/actions/findmymouse",
+      "Tooltip": "Spotlight mouse cursor",
+      "States": [{ "Image": "imgs/actions/findmymouse", "Title": "Find" }],
+      "Controllers": ["Keypad"]
+    },
+    {
+      "UUID": "com.powertoys.controller.trigger.mousehighlighter",
+      "Name": "Mouse Highlighter",
+      "Icon": "imgs/actions/mousehighlighter",
+      "Tooltip": "Highlight mouse clicks",
+      "States": [{ "Image": "imgs/actions/mousehighlighter", "Title": "Highlight" }],
+      "Controllers": ["Keypad"]
+    },
+    {
+      "UUID": "com.powertoys.controller.trigger.mousejump",
+      "Name": "Mouse Jump",
+      "Icon": "imgs/actions/mousejump",
+      "Tooltip": "Jump mouse to location",
+      "States": [{ "Image": "imgs/actions/mousejump", "Title": "Jump" }],
+      "Controllers": ["Keypad"]
+    },
+    {
+      "UUID": "com.powertoys.controller.trigger.mousecrosshairs",
+      "Name": "Mouse Crosshairs",
+      "Icon": "imgs/actions/mousecrosshairs",
+      "Tooltip": "Show crosshairs (Win+Alt+P)",
+      "States": [{ "Image": "imgs/actions/mousecrosshairs", "Title": "Cross" }],
+      "Controllers": ["Keypad"]
+    },
+    {
+      "UUID": "com.powertoys.controller.trigger.peek",
+      "Name": "Peek",
+      "Icon": "imgs/actions/peek",
+      "Tooltip": "Quick file preview (Ctrl+Space)",
+      "States": [{ "Image": "imgs/actions/peek", "Title": "Peek" }],
+      "Controllers": ["Keypad"]
+    },
+    {
+      "UUID": "com.powertoys.controller.trigger.advancedpaste",
+      "Name": "Advanced Paste",
+      "Icon": "imgs/actions/advancedpaste",
+      "Tooltip": "Open Advanced Paste (Win+Shift+V)",
+      "States": [{ "Image": "imgs/actions/advancedpaste", "Title": "Paste+" }],
+      "Controllers": ["Keypad"]
+    },
+    {
+      "UUID": "com.powertoys.controller.trigger.pasteplaintext",
+      "Name": "Paste Plain Text",
+      "Icon": "imgs/actions/pasteplaintext",
+      "Tooltip": "Paste plain (Win+Ctrl+Alt+V)",
+      "States": [{ "Image": "imgs/actions/pasteplaintext", "Title": "Plain" }],
+      "Controllers": ["Keypad"]
+    },
+    {
+      "UUID": "com.powertoys.controller.trigger.cropandlock.reparent",
+      "Name": "Crop Window",
+      "Icon": "imgs/actions/cropandlock",
+      "Tooltip": "Crop And Lock (Win+Ctrl+Shift+R)",
+      "States": [{ "Image": "imgs/actions/cropandlock", "Title": "Crop" }],
+      "Controllers": ["Keypad"]
+    },
+    {
+      "UUID": "com.powertoys.controller.trigger.cropandlock.thumbnail",
+      "Name": "Crop Thumbnail",
+      "Icon": "imgs/actions/cropandlock",
+      "Tooltip": "Crop Thumbnail (Win+Ctrl+Shift+T)",
+      "States": [{ "Image": "imgs/actions/cropandlock", "Title": "Thumb" }],
+      "Controllers": ["Keypad"]
+    },
+    {
+      "UUID": "com.powertoys.controller.trigger.workspaceseditor",
+      "Name": "Workspaces Editor",
+      "Icon": "imgs/actions/workspaces",
+      "Tooltip": "Open Workspaces (Win+Ctrl+`)",
+      "States": [{ "Image": "imgs/actions/workspaces", "Title": "Workspace" }],
+      "Controllers": ["Keypad"]
+    },
+    {
+      "UUID": "com.powertoys.controller.trigger.powertoysrun",
+      "Name": "PowerToys Run",
+      "Icon": "imgs/actions/powertoysrun",
+      "Tooltip": "Open launcher (Alt+Space)",
+      "States": [{ "Image": "imgs/actions/powertoysrun", "Title": "Run" }],
+      "Controllers": ["Keypad"]
+    },
+    {
+      "UUID": "com.powertoys.controller.trigger.cmdpal",
+      "Name": "Command Palette",
+      "Icon": "imgs/actions/cmdpal",
+      "Tooltip": "Command Palette (Win+Ctrl+Space)",
+      "States": [{ "Image": "imgs/actions/cmdpal", "Title": "CmdPal" }],
+      "Controllers": ["Keypad"]
+    },
+    {
+      "UUID": "com.powertoys.controller.trigger.settings",
+      "Name": "PowerToys Settings",
+      "Icon": "imgs/actions/settings",
+      "Tooltip": "Open PowerToys Settings",
+      "States": [{ "Image": "imgs/actions/settings", "Title": "Settings" }],
+      "Controllers": ["Keypad"]
+    },
+    {
+      "UUID": "com.powertoys.controller.trigger.awake.indefinite",
+      "Name": "Keep Awake",
+      "Icon": "imgs/actions/awake",
+      "Tooltip": "Keep PC awake",
+      "States": [{ "Image": "imgs/actions/awake", "Title": "Stay On" }],
+      "Controllers": ["Keypad"]
+    },
+    {
+      "UUID": "com.powertoys.controller.trigger.awake.off",
+      "Name": "Sleep Normal",
+      "Icon": "imgs/actions/awake",
+      "Tooltip": "Allow PC to sleep",
+      "States": [{ "Image": "imgs/actions/awake", "Title": "Sleep" }],
+      "Controllers": ["Keypad"]
+    }
+  ]
+}
