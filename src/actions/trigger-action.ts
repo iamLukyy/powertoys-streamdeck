@@ -1,21 +1,62 @@
 import streamDeck, {
   action,
   KeyDownEvent,
+  WillAppearEvent,
   SingletonAction,
   type JsonObject
 } from "@elgato/streamdeck";
 import { powerToysService } from "../services/powertoys-service.js";
 import { keyboardService } from "../services/keyboard-service.js";
+import { settingsReader } from "../services/settings-reader.js";
 import type { HotkeyDefinition } from "../types/index.js";
 import { DEFAULT_HOTKEYS } from "../types/index.js";
 
-// Base trigger action
-class BaseTriggerAction extends SingletonAction<JsonObject> {
+import type { JsonValue } from "@elgato/streamdeck";
+
+// Settings type for trigger actions
+type TriggerSettings = {
+  currentShortcut?: string;
+  autoEnable?: boolean;
+  [key: string]: JsonValue | undefined;
+};
+
+// Base trigger action with PowerToys settings sync
+class BaseTriggerAction extends SingletonAction<TriggerSettings> {
   protected moduleName: string = "";
   protected featureName: string = "";
   protected defaultHotkey: HotkeyDefinition = { code: 0 };
+  protected settingsKey: string = ""; // Key for settings reader (if different from moduleName)
 
-  override async onKeyDown(ev: KeyDownEvent<JsonObject>): Promise<void> {
+  override async onWillAppear(ev: WillAppearEvent<TriggerSettings>): Promise<void> {
+    // Read current shortcut from PowerToys settings
+    await this.updateShortcutDisplay(ev);
+  }
+
+  private async updateShortcutDisplay(ev: WillAppearEvent<TriggerSettings> | KeyDownEvent<TriggerSettings>): Promise<void> {
+    try {
+      const key = this.settingsKey || this.moduleName;
+      const hotkey = await settingsReader.getHotkey(key);
+
+      if (hotkey) {
+        const shortcutString = settingsReader.hotkeyToString(hotkey);
+        await ev.action.setSettings({
+          ...ev.payload.settings,
+          currentShortcut: shortcutString
+        });
+      } else {
+        // Use default hotkey
+        const shortcutString = settingsReader.hotkeyToString(this.defaultHotkey);
+        await ev.action.setSettings({
+          ...ev.payload.settings,
+          currentShortcut: `${shortcutString} (default)`
+        });
+      }
+    } catch (error) {
+      streamDeck.logger.error(`Failed to read shortcut: ${error}`);
+    }
+  }
+
+  override async onKeyDown(ev: KeyDownEvent<TriggerSettings>): Promise<void> {
     try {
       // Auto-enable if needed
       if (ev.payload.settings.autoEnable) {
@@ -26,11 +67,16 @@ class BaseTriggerAction extends SingletonAction<JsonObject> {
         }
       }
 
-      const customHotkey = ev.payload.settings.customHotkey as HotkeyDefinition | undefined;
-      const hotkey = customHotkey || this.defaultHotkey;
+      // Read hotkey from PowerToys settings (with fallback to default)
+      const key = this.settingsKey || this.moduleName;
+      const hotkey = await settingsReader.getHotkey(key) || this.defaultHotkey;
+
       await keyboardService.sendShortcut(hotkey);
       await ev.action.showOk();
       streamDeck.logger.info(`Triggered: ${this.featureName}`);
+
+      // Update display after trigger
+      await this.updateShortcutDisplay(ev);
     } catch (error) {
       streamDeck.logger.error(`Trigger failed: ${error}`);
       await ev.action.showAlert();
@@ -125,6 +171,7 @@ export class TriggerAdvancedPaste extends BaseTriggerAction {
 @action({ UUID: "com.powertoys.controller.trigger.pasteplaintext" })
 export class TriggerPastePlainText extends BaseTriggerAction {
   moduleName = "AdvancedPaste";
+  settingsKey = "PastePlain";
   featureName = "Paste Plain Text";
   defaultHotkey = DEFAULT_HOTKEYS.PastePlainText;
 }
@@ -165,40 +212,20 @@ export class TriggerCmdPal extends BaseTriggerAction {
 }
 
 @action({ UUID: "com.powertoys.controller.trigger.settings" })
-export class OpenSettingsAction extends SingletonAction<JsonObject> {
-  override async onKeyDown(ev: KeyDownEvent<JsonObject>): Promise<void> {
+export class OpenSettingsAction extends SingletonAction<TriggerSettings> {
+  override async onWillAppear(ev: WillAppearEvent<TriggerSettings>): Promise<void> {
+    await ev.action.setSettings({
+      ...ev.payload.settings,
+      currentShortcut: "Opens Settings"
+    });
+  }
+
+  override async onKeyDown(ev: KeyDownEvent<TriggerSettings>): Promise<void> {
     try {
       await keyboardService.openPowerToysSettings();
       await ev.action.showOk();
     } catch (error) {
       streamDeck.logger.error(`Open settings failed: ${error}`);
-      await ev.action.showAlert();
-    }
-  }
-}
-
-@action({ UUID: "com.powertoys.controller.trigger.awake.indefinite" })
-export class AwakeIndefiniteAction extends SingletonAction<JsonObject> {
-  override async onKeyDown(ev: KeyDownEvent<JsonObject>): Promise<void> {
-    try {
-      await powerToysService.setModuleEnabled("Awake", true);
-      await powerToysService.setAwakeMode(1, true);
-      await ev.action.showOk();
-    } catch (error) {
-      streamDeck.logger.error(`Awake failed: ${error}`);
-      await ev.action.showAlert();
-    }
-  }
-}
-
-@action({ UUID: "com.powertoys.controller.trigger.awake.off" })
-export class AwakeOffAction extends SingletonAction<JsonObject> {
-  override async onKeyDown(ev: KeyDownEvent<JsonObject>): Promise<void> {
-    try {
-      await powerToysService.setAwakeMode(0, false);
-      await ev.action.showOk();
-    } catch (error) {
-      streamDeck.logger.error(`Awake off failed: ${error}`);
       await ev.action.showAlert();
     }
   }

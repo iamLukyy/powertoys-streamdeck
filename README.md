@@ -1,6 +1,6 @@
 # PowerToys Controller for Stream Deck
 
-A Stream Deck plugin for complete control over Microsoft PowerToys modules.
+A Stream Deck plugin to activate Microsoft PowerToys features with a single button press.
 
 ![PowerToys](https://img.shields.io/badge/PowerToys-v0.96+-blue)
 ![Stream Deck](https://img.shields.io/badge/Stream%20Deck-6.6+-green)
@@ -8,129 +8,63 @@ A Stream Deck plugin for complete control over Microsoft PowerToys modules.
 
 ## Features
 
-### Toggle Actions (17 modules)
-Enable/disable PowerToys modules with visual ON/OFF state:
+### 19 Trigger Actions
+Activate PowerToys features instantly:
 
-- **FancyZones** - Window management zones
-- **Image Resizer** - Bulk image resizing
-- **File Explorer Preview** - Preview handlers
-- **PowerRename** - Bulk file renaming
-- **Keyboard Manager** - Key remapping
-- **Crop And Lock** - Window cropping
-- **Awake** - Keep PC awake
-- **Mouse Without Borders** - Multi-PC mouse sharing
-- **Quick Accent** - Special characters
-- **Hosts Editor** - Hosts file editing
-- **File Locksmith** - File lock detection
-- **Registry Preview** - .reg file preview
-- **Environment Variables** - Env vars editor
-- **New+** - File templates
-- **ZoomIt** - Screen zoom/annotation
-- **Cursor Wrap** - Cursor wrapping between monitors
-- **Light Switch** - Theme switching
+| Action | Default Shortcut |
+|--------|-----------------|
+| Color Picker | Win+Shift+C |
+| Always On Top | Win+Ctrl+T |
+| FancyZones Editor | Win+Shift+` |
+| Text Extractor (OCR) | Win+Shift+T |
+| Shortcut Guide | Win+Shift+/ |
+| Screen Ruler | Win+Ctrl+Shift+M |
+| Find My Mouse | Double Ctrl |
+| Mouse Highlighter | Win+Shift+H |
+| Mouse Jump | Win+Shift+D |
+| Mouse Crosshairs | Win+Alt+P |
+| Peek | Ctrl+Space |
+| Advanced Paste | Win+Shift+V |
+| Paste Plain Text | Win+Ctrl+Alt+V |
+| Crop Window | Win+Ctrl+Shift+R |
+| Crop Thumbnail | Win+Ctrl+Shift+T |
+| Workspaces Editor | Win+Ctrl+` |
+| PowerToys Run | Alt+Space |
+| Command Palette | Win+Ctrl+Space |
+| PowerToys Settings | - |
 
-### Trigger Actions (21 features)
-Activate PowerToys features with keyboard shortcuts:
+### Shortcut Sync
+Shortcuts are **automatically synced** from PowerToys settings. Change a shortcut in PowerToys and the plugin uses it immediately - no configuration needed!
 
-- **Color Picker** - Pick any color (Win+Shift+C)
-- **Always On Top** - Pin window (Win+Ctrl+T)
-- **FancyZones Editor** - Edit zones (Win+Shift+`)
-- **Text Extractor** - OCR text (Win+Shift+T)
-- **Shortcut Guide** - Show shortcuts (Win+Shift+/)
-- **Screen Ruler** - Measure pixels (Win+Ctrl+Shift+M)
-- **Find My Mouse** - Spotlight cursor
-- **Mouse Highlighter** - Highlight clicks
-- **Mouse Jump** - Jump cursor
-- **Mouse Crosshairs** - Show crosshairs (Win+Alt+P)
-- **Peek** - File preview (Ctrl+Space)
-- **Advanced Paste** - Paste options (Win+Shift+V)
-- **Paste Plain Text** - Plain paste (Win+Ctrl+Alt+V)
-- **Crop Window** - Crop and lock (Win+Ctrl+Shift+R)
-- **Crop Thumbnail** - Thumbnail mode (Win+Ctrl+Shift+T)
-- **Workspaces Editor** - Edit workspaces (Win+Ctrl+`)
-- **PowerToys Run** - App launcher (Alt+Space)
-- **Command Palette** - Commands (Win+Ctrl+Space)
-- **PowerToys Settings** - Open settings
-- **Keep Awake** - Stay awake mode
-- **Sleep Normal** - Allow sleep
+View current shortcut in Property Inspector (right panel when action is selected).
 
 ## Requirements
 
 - **Windows 10/11**
-- **Microsoft PowerToys** v0.96 or later - [Download](https://github.com/microsoft/PowerToys)
-- **Elgato Stream Deck** software v6.6 or later
+- **Microsoft PowerToys** v0.96+ - [Download](https://github.com/microsoft/PowerToys)
+- **Elgato Stream Deck** software v6.6+
 
 ## Installation
 
-### Option 1: Download Release
-1. Download `com.powertoys.controller.streamDeckPlugin` from [Releases](../../releases)
+### Option 1: Download Release (Recommended)
+1. Download `com.powertoys.controller.streamDeckPlugin` from [Releases](../../releases/latest)
 2. Double-click to install
 3. Restart Stream Deck
 
-### Option 2: Manual Install
-1. Clone this repository
-2. Copy `com.powertoys.controller.sdPlugin` folder to:
-   ```
-   %APPDATA%\Elgato\StreamDeck\Plugins\
-   ```
-3. Restart Stream Deck
-
-### Option 3: Development
+### Option 2: Build from Source
 ```bash
-# Clone repo
-git clone https://github.com/user/powertoys-streamdeck.git
+git clone https://github.com/iamLukyy/powertoys-streamdeck.git
 cd powertoys-streamdeck
-
-# Install dependencies
 npm install
-
-# Build
 npm run build
-
-# Link to Stream Deck
 npx @elgato/cli link com.powertoys.controller.sdPlugin
-```
-
-## Building from Source
-
-```bash
-# Install dependencies
-npm install
-
-# Build plugin
-npm run build
-
-# Create distributable package
-npx @elgato/cli pack com.powertoys.controller.sdPlugin
-```
-
-## Project Structure
-
-```
-├── src/
-│   ├── plugin.ts              # Entry point
-│   ├── actions/
-│   │   ├── toggle-action.ts   # Toggle ON/OFF actions
-│   │   └── trigger-action.ts  # Trigger feature actions
-│   ├── services/
-│   │   ├── powertoys-service.ts   # PowerToys DSC integration
-│   │   └── keyboard-service.ts    # Keyboard shortcut simulation
-│   └── types/
-│       └── index.ts           # TypeScript types
-├── com.powertoys.controller.sdPlugin/
-│   ├── manifest.json          # Plugin manifest
-│   ├── bin/plugin.js          # Compiled code
-│   └── imgs/                  # Icons
-├── package.json
-├── tsconfig.json
-└── rollup.config.js
 ```
 
 ## How It Works
 
-- **Toggle actions** use `PowerToys.DSC.exe` to enable/disable modules
-- **Trigger actions** simulate keyboard shortcuts using [nut.js](https://github.com/nut-tree/nut.js)
-- Icons are sourced from official PowerToys repository
+- Reads keyboard shortcuts from PowerToys JSON settings (`%LOCALAPPDATA%\Microsoft\PowerToys\`)
+- Simulates keyboard input using [nut.js](https://github.com/nut-tree/nut.js)
+- Icons sourced from official PowerToys repository
 
 ## License
 

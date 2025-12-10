@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>PowerToys Trigger</title>
+    <script src="https://sdpi-components.dev/releases/v4/sdpi-components.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-size: 12px;
+            color: #9a9a9a;
+            background-color: transparent;
+            margin: 0;
+            padding: 8px;
+        }
+        .info-row {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #3a3a3a;
+        }
+        .info-label {
+            flex: 0 0 80px;
+            color: #9a9a9a;
+        }
+        .info-value {
+            flex: 1;
+            color: #ffffff;
+            font-weight: 500;
+        }
+        .sync-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #1a472a;
+            color: #4ade80;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="info-row">
+        <span class="info-label">Shortcut:</span>
+        <span class="info-value" id="shortcut">Loading...</span>
+    </div>
+    <div class="sync-badge">
+        <span>&#x1F4E1;</span> Synced from PowerToys
+    </div>
+
+    <script>
+        const { streamDeckClient } = SDPIComponents;
+
+        // Listen for settings updates
+        streamDeckClient.didReceiveSettings.subscribe((event) => {
+            const shortcut = event.settings?.currentShortcut || "Not configured";
+            document.getElementById("shortcut").textContent = shortcut;
+        });
+
+        // Request current settings on load
+        streamDeckClient.getSettings();
+    </script>
+</body>
+</html>
