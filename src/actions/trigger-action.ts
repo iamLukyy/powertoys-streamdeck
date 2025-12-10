@@ -126,34 +126,6 @@ export class TriggerMeasureTool extends BaseTriggerAction {
   defaultHotkey = DEFAULT_HOTKEYS.MeasureTool;
 }
 
-@action({ UUID: "com.powertoys.controller.trigger.findmymouse" })
-export class TriggerFindMyMouse extends BaseTriggerAction {
-  moduleName = "FindMyMouse";
-  featureName = "Find My Mouse";
-  defaultHotkey = DEFAULT_HOTKEYS.FindMyMouse;
-}
-
-@action({ UUID: "com.powertoys.controller.trigger.mousehighlighter" })
-export class TriggerMouseHighlighter extends BaseTriggerAction {
-  moduleName = "MouseHighlighter";
-  featureName = "Mouse Highlighter";
-  defaultHotkey = DEFAULT_HOTKEYS.MouseHighlighter;
-}
-
-@action({ UUID: "com.powertoys.controller.trigger.mousejump" })
-export class TriggerMouseJump extends BaseTriggerAction {
-  moduleName = "MouseJump";
-  featureName = "Mouse Jump";
-  defaultHotkey = DEFAULT_HOTKEYS.MouseJump;
-}
-
-@action({ UUID: "com.powertoys.controller.trigger.mousecrosshairs" })
-export class TriggerMouseCrosshairs extends BaseTriggerAction {
-  moduleName = "MousePointerCrosshairs";
-  featureName = "Mouse Crosshairs";
-  defaultHotkey = DEFAULT_HOTKEYS.MouseCrosshairs;
-}
-
 @action({ UUID: "com.powertoys.controller.trigger.peek" })
 export class TriggerPeek extends BaseTriggerAction {
   moduleName = "Peek";

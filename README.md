@@ -8,7 +8,7 @@ A Stream Deck plugin to activate Microsoft PowerToys features with a single butt
 
 ## Features
 
-### 19 Trigger Actions
+### 15 Trigger Actions
 Activate PowerToys features instantly:
 
 | Action | Default Shortcut |
@@ -19,10 +19,6 @@ Activate PowerToys features instantly:
 | Text Extractor (OCR) | Win+Shift+T |
 | Shortcut Guide | Win+Shift+/ |
 | Screen Ruler | Win+Ctrl+Shift+M |
-| Find My Mouse | Double Ctrl |
-| Mouse Highlighter | Win+Shift+H |
-| Mouse Jump | Win+Shift+D |
-| Mouse Crosshairs | Win+Alt+P |
 | Peek | Ctrl+Space |
 | Advanced Paste | Win+Shift+V |
 | Paste Plain Text | Win+Ctrl+Alt+V |
